@@ -304,11 +304,8 @@ function getSumOfDigits() {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(num) {
-  if (num <= 0) {
-    return false;
-  }
-  return (num & (num - 1)) === 0;
+function isPowerOfTwo() {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -339,7 +336,7 @@ function getSine(num) {
  */
 function numberToStringInBase(number, base) {
   if (base < 2 || base > 36) {
-    throw new Error("Radix must be between 2 and 36");
+    throw new Error('Radix must be between 2 and 36');
   }
   return number.toString(base);
 }
@@ -468,7 +465,7 @@ function getFloatOnString() {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(str, base) {
+function getIntegerOnString() {
   throw new Error('Not implemented');
 }
 
@@ -558,7 +555,7 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  let sum = x1 + x2 + x3;
+  const sum = x1 + x2 + x3;
   return sum.toFixed(3);
 }
 
@@ -590,10 +587,8 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
  * -1, 1 => -1 | 0 | 1
  */
-function getRandomInteger(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+function getRandomInteger() {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -623,7 +618,7 @@ function getHypotenuse() {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(number) {
+function getCountOfOddNumbers() {
   throw new Error('Not implemented');
 }
 
