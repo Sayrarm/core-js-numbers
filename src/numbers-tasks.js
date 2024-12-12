@@ -51,7 +51,7 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  return (value1 + value2) / 2;
+  return value1 / 2 + value2 / 2;
 }
 
 /**
@@ -185,8 +185,10 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen() {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  const factor = 10 ** pow;
+  const rounded = Math.round(num / factor);
+  return rounded * factor;
 }
 
 /**
@@ -194,7 +196,7 @@ function roundToPowerOfTen() {
  * See: https://en.wikipedia.org/wiki/Primality_test
  *
  * @param {number} n
- * @return {bool}
+ * @return {boolean}
  *
  * @example:
  *   4 => false
@@ -206,8 +208,24 @@ function roundToPowerOfTen() {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  if (n <= 1) {
+    return false;
+  }
+  if (n <= 3) {
+    return true;
+  }
+  if (n % 2 === 0 || n % 3 === 0) {
+    return false;
+  }
+
+  for (let i = 5; i * i <= n; i += 6) {
+    if (n % i === 0 || n % (i + 2) === 0) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 /**
@@ -225,8 +243,9 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  const num = Number(value);
+  return Number.isNaN(num) ? def : num;
 }
 
 /**
@@ -289,8 +308,18 @@ function getSumToN(n) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits() {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  const numStr = Math.abs(num).toString();
+  let sum = 0;
+
+  for (let i = 0; i < numStr.length; i += 1) {
+    const digit = parseInt(numStr[i], 10);
+    if (!Number.isNaN(digit)) {
+      sum += digit;
+    }
+  }
+
+  return sum;
 }
 
 /**
@@ -304,8 +333,13 @@ function getSumOfDigits() {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo() {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  if (num <= 0) return false;
+  let tempNum = num;
+  while (tempNum % 2 === 0) {
+    tempNum /= 2;
+  }
+  return tempNum === 1;
 }
 
 /**
@@ -385,8 +419,8 @@ function toFixed(number, fractionDigits) {
  * 12345, 7    => '12345.00'
  * 12.345, 4   => '12.35'
  */
-function toPrecision() {
-  throw new Error('Not implemented');
+function toPrecision(number, precision) {
+  return number.toPrecision(precision);
 }
 
 /**
@@ -447,8 +481,8 @@ function isInteger(number) {
  * '4.567abcdefgh' => 4.567
  * 'abcdefgh'      => NaN
  */
-function getFloatOnString() {
-  throw new Error('Not implemented');
+function getFloatOnString(str) {
+  return Number.parseFloat(str);
 }
 
 /**
